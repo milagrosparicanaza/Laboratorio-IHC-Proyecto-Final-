@@ -9,4 +9,4 @@ class Producto(models.Model):
   # vendedor = models.ForeignKey(Vendedor, on_delete=models.CASCADE)
   # clientes = models.ManyToManyField(Cliente)
   def get_absolute_url(self):
-    return reverse('tienda:producto-detail', kwargs = {'pk': self.id})
+    return reverse('productos:producto-detail', kwargs = {'pk': self.id})
