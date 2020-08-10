@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Inicio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'lib/bootstrap-4.5.2-dist/css/bootstrap.min.css'%}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="{% static 'lib/bootstrap-4.5.2-dist/js/popper.min.js'%}"></script>
+  <script src="{% static 'lib/bootstrap-4.5.2-dist/js/bootstrap.min.js'%}"></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+  <h1>Productos</h1>
+  <p><p>{{ name }}</p></p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    {% for producto in productos %}
+      <div class="col-sm-4">
+        <h3>{{ producto.nombre }}</h3>
+        <p>Precio: {{ producto.precio }}</p>
+        <img src= {{ producto.foto.url }} style="width:250px;">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+</body>
+</html>
