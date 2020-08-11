@@ -19,7 +19,7 @@
 <div class="container">
   <div class="row">
     {% for producto in object_list %}
-      <div class="col-sm-4">
+      <div class="col-sm-4 border">
         <h3>{{ producto.nombre }}</h3>
         <p>Precio: {{ producto.precio }}</p>
         <img src= {{ producto.foto.url }} style="width:250px;">
