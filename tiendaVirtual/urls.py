@@ -21,6 +21,7 @@ from tienda.views import homeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('productos/', include('productos.urls')),
-    path('', homeView)
+    path('productos/', include('productos.urls'), name = 'productos'),
+    path('vendedores/', include('vendedor.urls'), name = 'vendedores'),
+    path('', homeView.as_view(), name = 'inicio'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

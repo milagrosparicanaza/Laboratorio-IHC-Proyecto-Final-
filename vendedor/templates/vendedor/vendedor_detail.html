@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Detalle de Vendedor
+{% endblock %}
+{% block body %}
+<h1> Detalle de Vendedores </h1>
+<h2> {{ object.user.username }}</h2>
+<p> Nombres: {{ object.user.first_name }} </p>
+<p> Apellidos: {{ object.user.last_name }} </p>
+<p> Tienda: {{ object.tienda }} </p>
+<h3> Productos </h3>
+<ul>
+{% for producto in productos %}
+  <li><a href='{{ producto.get_absolute_url }}'>{{producto.nombre}} <a href='{{ producto.get_absolute_url }}update'>editar <a href='{{ producto.get_absolute_url }}delete'>eliminar</li>
+{% endfor %}
+</ul>
+<a class="btn btn-primary btn-lg" href="{% url 'productos:productos-create' %}" role="button">Agregar</a>
+{% endblock %}

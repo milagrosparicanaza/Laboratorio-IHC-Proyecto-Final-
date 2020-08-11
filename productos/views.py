@@ -21,7 +21,7 @@ class ProductoCreateView(CreateView):
     'precio',
     'descripcion',
     'foto',
-    #'vendedor',
+    'vendedor',
   ]
 class ProductoUpdateView(UpdateView):
   model = Producto
@@ -30,8 +30,8 @@ class ProductoUpdateView(UpdateView):
     'precio',
     'descripcion',
     'foto',
-    #'vendedor',
+    'vendedor',
   ]
 class ProductoDeleteView(DeleteView):
   model = Producto
-  success_url = reverse_lazy('productos:producto-list')
+  success_url = reverse_lazy('productos:productos-list')
