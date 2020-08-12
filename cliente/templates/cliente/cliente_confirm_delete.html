@@ -1,0 +1,12 @@
+{% extends 'baseven.html' %}
+{% block title %}
+  Borrar Cliente
+{% endblock %}
+{% block body %}
+<h1> Borrando Cliente </h1>
+<h2> {{ object.name }} </h2>
+<form method="post">{% csrf_token %}
+  <p> Confirme que desea borrar este Cliente </p>
+  <input type="submit" value="Confirmar">
+</form>
+{% endblock %}

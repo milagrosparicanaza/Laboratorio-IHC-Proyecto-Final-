@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('productos/', include('productos.urls'), name = 'productos'),
     path('vendedores/', include('vendedor.urls'), name = 'vendedores'),
+    path('clientes/', include('cliente.urls'), name = 'clientes'),
     path('', homeView.as_view(), name = 'inicio'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
