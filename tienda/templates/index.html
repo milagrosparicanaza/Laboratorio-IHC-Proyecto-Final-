@@ -11,6 +11,22 @@
   <script src="{% static 'lib/bootstrap-4.5.2-dist/js/bootstrap.min.js'%}"></script>
 </head>
 <body>
+<div class="container">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ idVendedor.get_absolute_url }}">Vendedor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+  </ul>
+</div>
 <div class="jumbotron text-center">
   <h1>Productos</h1>
   <p><p>{{ name }}</p></p>
