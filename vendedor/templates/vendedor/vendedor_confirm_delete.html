@@ -1,0 +1,12 @@
+{% extends 'baseven.html' %}
+{% block title %}
+  Borrar Vendedor
+{% endblock %}
+{% block body %}
+<h1> Borrando Vendedor </h1>
+<h2> {{ object.name }} </h2>
+<form method="post">{% csrf_token %}
+  <p> Confirme que desea borrar este Vendedor </p>
+  <input type="submit" value="Confirmar">
+</form>
+{% endblock %}

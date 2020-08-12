@@ -1,0 +1,14 @@
+{% extends 'baseprod.html' %}
+{% load static %}
+{% block title %}
+  Detalle de Producto
+{% endblock %}
+{% block body %}
+<h1> Detalle de Productos </h1>
+<h2> {{ object.nombre }}</h2>
+<p> Precio: {{ object.precio }} </p>
+<p> Descripcion: {{ object.descripcion }} </p>
+<img src= {{ object.foto.url }} style="width:250px;">
+<p> Vendedor: {{ object.vendedor }} </p>
+<p> id: {{ price_lte }} </p>
+{% endblock %}
