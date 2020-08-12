@@ -16,12 +16,15 @@
     <li class="nav-item">
       <a class="nav-link" href="{{ idVendedor.get_absolute_url }}">Vendedor</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
+    {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">Cerrar sesion</a>
+      </li>
+    {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Iniciar Sesion</a>
+      </li>
+    {% endif %}
     <li class="nav-item">
       <a class="nav-link disabled" href="#">Disabled</a>
     </li>

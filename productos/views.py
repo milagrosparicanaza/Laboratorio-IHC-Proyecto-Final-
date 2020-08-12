@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.views.generic import (
@@ -23,6 +25,10 @@ class ProductoCreateView(CreateView):
     'foto',
     'vendedor',
   ]
+  
+  @method_decorator(login_required)
+  def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)
 class ProductoUpdateView(UpdateView):
   model = Producto
   fields = [
@@ -32,6 +38,14 @@ class ProductoUpdateView(UpdateView):
     'foto',
     'vendedor',
   ]
+  
+  @method_decorator(login_required)
+  def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)
 class ProductoDeleteView(DeleteView):
   model = Producto
   success_url = reverse_lazy('productos:productos-list')
+  
+  @method_decorator(login_required)
+  def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)

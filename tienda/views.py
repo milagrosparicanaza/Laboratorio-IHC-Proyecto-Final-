@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import ListView
 from productos.models import Producto
 from vendedor.models import Vendedor
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 
 class homeView(ListView):
   model = Producto;
