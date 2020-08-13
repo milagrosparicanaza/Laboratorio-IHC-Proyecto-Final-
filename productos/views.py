@@ -77,6 +77,8 @@ class ProductoCreateView(CreateView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
+    titulo = 'Nuevo Producto'
+    context['titulo'] = titulo
     if user != None:
     	context['Vendedor'] = Vendedor.objects.get(user__id = user)
     return context
@@ -92,6 +94,8 @@ class ProductoUpdateView(UpdateView):
   def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
+    titulo = 'Editar Producto'
+    context['titulo'] = titulo
     if user != None:
     	context['Vendedor'] = Vendedor.objects.get(user__id = user)
     return context

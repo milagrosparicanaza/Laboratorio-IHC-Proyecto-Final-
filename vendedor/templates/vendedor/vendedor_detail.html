@@ -18,16 +18,17 @@
       <thead>
         <tr>
           <th>Producto</th>
-          <th> </th>
-          <th> </th>
+          <th></th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
         {% for producto in productos %}
         <tr>
           <td><a href='{{ producto.get_absolute_url }}'>{{producto.nombre}}</td>
-          <td><a href='{{ producto.get_absolute_url }}update'>editar</td>
-          <td><a href='{{ producto.get_absolute_url }}delete'>eliminar</td>
+          <td></td>
+          <td><a href='{{ producto.get_absolute_url }}update'>editar&nbsp&nbsp
+          <a href='{{ producto.get_absolute_url }}delete'>eliminar</td>
         </tr>
         {% endfor %}
       </tbody>
