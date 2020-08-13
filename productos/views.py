@@ -102,7 +102,6 @@ class ProductoUpdateView(UpdateView):
     
 class ProductoDeleteView(DeleteView):
   model = Producto
-<<<<<<< HEAD
   success_url = reverse_lazy('productos:productos-list')
 
 class LisProductos(ListView):
@@ -115,7 +114,6 @@ class LisProductos(ListView):
     subjects = precio.precio.all()
     data = serializers.serializers('json', subjects, fields=('name','precio','descripcion'))
     return HttpResponse(data, context_type='aplication/json')
-=======
   
   def get_success_url(self, **kwargs):
     user = self.request.user.id
@@ -137,4 +135,3 @@ class ProductoQueryView(View):
   def get(self, request, *args, **kwargs):
       queryset = Producto.objects.all()
       return JsonResponse(list(queryset.values()), safe = False)
->>>>>>> 70584232b07c7fb4489f5986b4d29114170841f8

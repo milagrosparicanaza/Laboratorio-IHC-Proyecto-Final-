@@ -39,7 +39,6 @@ class ClienteDeleteView(DeleteView):
   model = Cliente
   success_url = reverse_lazy('cliente:cliente-list')
 
-<<<<<<< HEAD
 def index(request):
   if request.method == 'POST':
     mail = request.POST.get('mail')
@@ -59,7 +58,6 @@ def send_email(mail):
     [mail]
   )
   email.attach_alternative(content, 'text/html')
-=======
 class ClienteQueryView(View):
     def get(self, request, *args, **kwargs):
       queryset = Cliente.objects.all()
@@ -74,4 +72,3 @@ class ReporteClientePDF(View):
     pdf.showPage()
     pdf.save()
     return response
->>>>>>> 70584232b07c7fb4489f5986b4d29114170841f8

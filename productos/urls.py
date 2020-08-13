@@ -1,12 +1,7 @@
 from django.urls import path
 from .views import (
-<<<<<<< HEAD
 ProductoListView, ProductoCreateView, ProductoDetailView, ProductoUpdateView, ProductoDeleteView,
-  LisProductos, )
-=======
-ProductoListView, ProductoCreateView, ProductoDetailView, ProductoUpdateView, ProductoDeleteView, ProductoQueryView,
-  )
->>>>>>> 70584232b07c7fb4489f5986b4d29114170841f8
+  LisProductos,ProductoQueryView )
 from django.conf.urls.static import static
 from django.conf import settings
 

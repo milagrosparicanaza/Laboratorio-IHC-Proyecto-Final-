@@ -19,8 +19,6 @@ class homeView(ListView):
     	context['Vendedor'] = Vendedor.objects.get(user__id = user)
     return context
 
-<<<<<<< HEAD
-=======
 class LoginFormView(LoginView):
   template_name = 'login.html'
   
@@ -51,4 +49,3 @@ def email(request):
     mail = request.POST.get('mail')
     send_email(mail)
   return render(request, 'send_mail.html', {})
->>>>>>> 70584232b07c7fb4489f5986b4d29114170841f8
