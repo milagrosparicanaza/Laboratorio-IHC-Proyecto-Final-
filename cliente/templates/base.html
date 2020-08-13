@@ -14,7 +14,7 @@
     <script src="{% static 'lib/bootstrap-4.5.2-dist/js/bootstrap.min.js'%}"></script>
   </head>
   <body>
-    <div style="text-align: center;">
+    {% include 'nav.html' %}
     {% block body %}
     {% endblock %}
   </div>
