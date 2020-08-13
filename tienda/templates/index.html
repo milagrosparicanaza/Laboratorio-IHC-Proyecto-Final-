@@ -21,8 +21,8 @@
     {% for producto in object_list %}
       <div class="col-sm-4 border">
         <img src= {{ producto.foto.url }} style="width:250px;" class="mx-auto d-block">
-        <h3>{{ producto.nombre }}</h3>
-        <p>Precio: {{ producto.precio }}</p>
+        <h4><a href='{{ producto.get_absolute_url }}'>{{ producto.nombre }}</a></h4>
+        <h6>Precio: S/. {{ producto.precio }}</h6>
         <p>Vendedor: {{ producto.vendedor.user }}</p>
       </div>
     {% endfor %}
