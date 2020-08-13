@@ -12,46 +12,5 @@
     {% block body %}
     {% endblock %}
 
-    <div id="content-div" class="row col-sm-8">
-      <a id="search-subjects" class="btn btn-primary">Search</a>
-      <div class = "col-sm-4">
-        <input id="name-producto" type="text" class="form-control">
-      </div>
-    </div>
-
-    <br>
-
-    <table class="table table-striped">
-      <thead>
-        <th>{% trans 'Name' %}</th>
-        <th>{% trans 'Precio' %}</th>
-      </thead>
-
-      <thody id="subjects">
-
-      </thody>
-    </table>
-
-
-
-
-    {% block js %}
-       {{ block.super }}
-      <script type="text/javascript">
-        $(document).ready(function(){
-          $('#content-div').on('click', '#search-subjects', function(){
-            var name = $('name-producto').val();
-    
-            $get('{% url "productos: productosList" %}', (name: name), function (data){
-              console.log(name)
-              var html = "";
-              for( var i= 0; i <data.length; i++){
-                html += "<tr><td>" + data.[i].fields.name + "</tr><td>" + data[i].fields.precio + "</td><tr>"
-              }
-              $('#subjects').html(html);
-            });
-          });
-        });
-       </script>
   </body>
 </html>
