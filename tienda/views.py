@@ -16,7 +16,10 @@ class homeView(ListView):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
     if user != None:
-    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      try:
+        context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      except:
+        context['Vendedor'] = None
     return context
 
 class LoginFormView(LoginView):

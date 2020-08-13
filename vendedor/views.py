@@ -29,7 +29,10 @@ class VendedorDetailView(DetailView):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
     context['thisVend'] = self.object.id
-    context['vend'] = Vendedor.objects.get(user__id = user).id
+    try:
+      context['vend'] = Vendedor.objects.get(user__id = user).id
+    except:
+      context['vend'] = None
     context['productos'] = Producto.objects.filter(vendedor__id = self.kwargs['pk'])
     return context
     

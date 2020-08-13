@@ -25,7 +25,7 @@ SECRET_KEY = 'qb$%lybn0sm7j+v_mqa@^lrfv2c2axkiw-))obu!0aw!xzt%8i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['victorvr.pythonanywhere.com']
 
 
 # Application definition

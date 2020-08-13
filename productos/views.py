@@ -25,7 +25,10 @@ class ProductoDetailView(DetailView):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
     if user != None:
-    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      try:
+        context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      except:
+        context['Vendedor'] = None
     return context
   
 class ProductoForm(forms.ModelForm):
@@ -80,7 +83,10 @@ class ProductoCreateView(CreateView):
     titulo = 'Nuevo Producto'
     context['titulo'] = titulo
     if user != None:
-    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      try:
+        context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      except:
+        context['Vendedor'] = None
     return context
     
 class ProductoUpdateView(UpdateView):
@@ -97,7 +103,10 @@ class ProductoUpdateView(UpdateView):
     titulo = 'Editar Producto'
     context['titulo'] = titulo
     if user != None:
-    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      try:
+        context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      except:
+        context['Vendedor'] = None
     return context
     
 class ProductoDeleteView(DeleteView):
@@ -128,7 +137,10 @@ class LisProductos(ListView):
     context = super().get_context_data(**kwargs)
     user = self.request.user.id
     if user != None:
-    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      try:
+        context['Vendedor'] = Vendedor.objects.get(user__id = user)
+      except:
+        context['Vendedor'] = None
     return context
     
 class ProductoQueryView(View):
