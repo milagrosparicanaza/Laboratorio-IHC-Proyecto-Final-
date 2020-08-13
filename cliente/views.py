@@ -8,6 +8,8 @@ from django.views.generic import (
   UpdateView,
   DeleteView,
   )
+from django.http import JsonResponse
+from django.views import View 
 from .models import Cliente
 
 class ClienteListView(ListView):
@@ -31,3 +33,8 @@ class ClienteUpdateView(UpdateView):
 class ClienteDeleteView(DeleteView):
   model = Cliente
   success_url = reverse_lazy('cliente:cliente-list')
+
+class ClienteQueryView(View):
+    def get(self, request, *args, **kwargs):
+      queryset = Cliente.objects.all()
+      return JsonResponse(list(queryset.values()), safe = False)

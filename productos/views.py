@@ -7,6 +7,8 @@ from django.views.generic import (
   UpdateView,
   DeleteView,
   )
+from django.views import View
+from django.http import JsonResponse
 from .models import Producto
 
 class ProductoListView(ListView):
@@ -35,3 +37,8 @@ class ProductoUpdateView(UpdateView):
 class ProductoDeleteView(DeleteView):
   model = Producto
   success_url = reverse_lazy('productos:productos-list')
+
+class ProductoQueryView(View):
+  def get(self, request, *args, **kwargs):
+      queryset = Producto.objects.all()
+      return JsonResponse(list(queryset.values()), safe = False)

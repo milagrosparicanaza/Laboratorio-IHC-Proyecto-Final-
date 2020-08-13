@@ -8,6 +8,8 @@ from django.views.generic import (
   UpdateView,
   DeleteView,
   )
+from django.views import View
+from django.http import JsonResponse
 from .models import Vendedor
 from productos.models import Producto
 
@@ -36,4 +38,9 @@ class VendedorUpdateView(UpdateView):
 class VendedorDeleteView(DeleteView):
   model = Vendedor
   success_url = reverse_lazy('vendedor:vendedor-list')
+
+class VendedorQueryView(View):
+  def get(self, request, *args, **kwargs):
+      queryset = Vendedor.objects.all()
+      return JsonResponse(list(queryset.values()), safe = False)
 # Create your views here.
