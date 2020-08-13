@@ -21,6 +21,13 @@ class ProductoListView(ListView):
 class ProductoDetailView(DetailView):
   model = Producto
   
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user.id
+    if user != None:
+    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+    return context
+  
 class ProductoForm(forms.ModelForm):
   class Meta:
         model = Producto
@@ -67,6 +74,13 @@ class ProductoCreateView(CreateView):
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
     
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user.id
+    if user != None:
+    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+    return context
+    
 class ProductoUpdateView(UpdateView):
   form_class = ProductoForm
   model = Producto
@@ -74,6 +88,13 @@ class ProductoUpdateView(UpdateView):
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user.id
+    if user != None:
+    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+    return context
     
 class ProductoDeleteView(DeleteView):
   model = Producto
@@ -86,6 +107,13 @@ class ProductoDeleteView(DeleteView):
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    user = self.request.user.id
+    if user != None:
+    	context['Vendedor'] = Vendedor.objects.get(user__id = user)
+    return context
     
 class ProductoQueryView(View):
   def get(self, request, *args, **kwargs):

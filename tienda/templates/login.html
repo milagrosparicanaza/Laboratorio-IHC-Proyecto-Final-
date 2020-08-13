@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,11 +19,11 @@
   <input type="hidden" name="next" value="{{ next }}">
     <div class="form-group">
       <label for="usuario">Usuario:</label>
-      {{ form.username }}
+      {{ form.username|add_class:'form-control' }}
     </div>
     <div class="form-group">
       <label for="pwd">Contraseña:</label>
-      {{ form.password }}
+      {{ form.password|add_class:'form-control' }}
     </div>
     <div class="form-group form-check">
       <label class="form-check-label">

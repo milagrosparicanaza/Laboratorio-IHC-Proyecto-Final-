@@ -4,11 +4,21 @@
   Detalle de Producto
 {% endblock %}
 {% block body %}
-<h1> Detalle de Productos </h1>
-<h2> {{ object.nombre }}</h2>
-<p> Precio: {{ object.precio }} </p>
-<p> Descripcion: {{ object.descripcion }} </p>
-<img src= {{ object.foto.url }} style="width:250px;">
-<p> Vendedor: {{ object.vendedor }} </p>
-<p> id: {{ price_lte }} </p>
+<div class="jumbotron text-center">
+  <h1> Detalle de Producto </h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col border">
+      <img src= {{ object.foto.url }} style="width:450px;" class="mx-auto d-block">
+    </div>
+    <div class="col border">
+      <h2> {{ object.nombre }}</h2>
+      <p> {{ object.vendedor }} </p>
+      <p><b> S/. {{ object.precio }} </b></p>
+      <p> {{ object.descripcion }} </p>
+      
+    </div>
+  </div>
+</div>
 {% endblock %}

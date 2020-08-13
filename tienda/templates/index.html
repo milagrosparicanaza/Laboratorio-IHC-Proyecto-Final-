@@ -20,9 +20,9 @@
   <div class="row">
     {% for producto in object_list %}
       <div class="col-sm-4 border">
+        <img src= {{ producto.foto.url }} style="width:250px;" class="mx-auto d-block">
         <h3>{{ producto.nombre }}</h3>
         <p>Precio: {{ producto.precio }}</p>
-        <img src= {{ producto.foto.url }} style="width:250px;">
         <p>Vendedor: {{ producto.vendedor.user }}</p>
       </div>
     {% endfor %}
