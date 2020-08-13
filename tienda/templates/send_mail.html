@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title> Enviar correo </title>
+    </head>
+    <body>
+        <h2> Send Mail </h2>
+        <form action='#' method='POST'>
+            {% csrf_token %}
+            <input type='text' name='mail' placeholder='demo@example.com'>
+            <input type='submit' value='Enviar'>
+        </form>
+    </body>
+</html>
