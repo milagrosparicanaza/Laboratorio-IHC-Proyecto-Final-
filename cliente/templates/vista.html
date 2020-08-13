@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Envio de Correo </title>
+  </head>
+  <body>
+      <h2>Enviar correo</h2>
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <input type="text" name='mail' placeholder="demo@example.com">
+        <input style="font-size: 26px;" type="submit" value="Enviar">
+      </form> 
+  </body>
+</html>
