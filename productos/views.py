@@ -51,7 +51,7 @@ class ProductoUpdateView(UpdateView):
     
 class ProductoDeleteView(DeleteView):
   model = Producto
-  success_url = '/vendedores'
+  
   def get_success_url(self, **kwargs):
     user = self.request.user.id
     idvend = Vendedor.objects.get(user__id = user).id

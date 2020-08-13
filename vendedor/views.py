@@ -1,5 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.http import HttpResponse
@@ -31,18 +30,21 @@ class VendedorDetailView(DetailView):
     context['vend'] = Vendedor.objects.get(user__id = user).id
     context['productos'] = Producto.objects.filter(vendedor__id = self.kwargs['pk'])
     return context
-  #@method_decorator(user_passes_test(property_check))
+
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
 class VendedorCreateView(CreateView):
   model = Vendedor
   fields = [
     'user',
     'tienda',
   ]
+  
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
 class VendedorUpdateView(UpdateView):
   model = Vendedor
   fields = [
@@ -53,6 +55,7 @@ class VendedorUpdateView(UpdateView):
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
 class VendedorDeleteView(DeleteView):
   model = Vendedor
   success_url = reverse_lazy('vendedor:vendedor-list')
@@ -60,4 +63,5 @@ class VendedorDeleteView(DeleteView):
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
 # Create your views here.
