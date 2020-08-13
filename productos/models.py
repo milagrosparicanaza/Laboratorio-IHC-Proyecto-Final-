@@ -11,3 +11,4 @@ class Producto(models.Model):
   # clientes = models.ManyToManyField(Cliente)
   def get_absolute_url(self):
     return reverse('productos:productos-detail', kwargs = {'pk': self.id})
+

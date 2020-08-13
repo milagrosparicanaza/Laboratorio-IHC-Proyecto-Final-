@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-ClienteListView, ClienteCreateView, ClienteDetailView, ClienteUpdateView, ClienteDeleteView,
+ClienteListView, ClienteCreateView, ClienteDetailView, ClienteUpdateView, ClienteDeleteView, index,
   )
 from django.conf.urls.static import static
 from django.conf import settings
@@ -12,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/', ClienteDetailView.as_view(), name = 'cliente-detail'),
     path('<int:pk>/update/', ClienteUpdateView.as_view(), name = 'cliente-update'),
     path('<int:pk>/delete/', ClienteDeleteView.as_view(), name = 'cliente-delete'),
+    path('index/', index, name = 'correo'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
