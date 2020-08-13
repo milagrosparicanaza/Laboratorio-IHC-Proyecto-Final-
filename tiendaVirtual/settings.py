@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'cliente',
     'productos',
     'tienda',
@@ -117,6 +118,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_REDIRECT_URL = 'inicio'
+
+LOGOUT_REDIRECT_URL = 'inicio'
+
+LOGIN_URL = 'login'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -129,8 +135,16 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+<<<<<<< HEAD
 EMAIL_HOST = 'smtp.googleemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'milagrosgrisell15@gmail.com'
 EMAIL_HOST_PASSWORD = 'mili159753'
+=======
+
+EMAIL_HOST = 'smtp.googlemail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'pwebdjango@gmail.com'
+EMAIL_HOST_PASSWORD = 'djangoexample'
+>>>>>>> 70584232b07c7fb4489f5986b4d29114170841f8
 EMAIL_USE_TLS = True
