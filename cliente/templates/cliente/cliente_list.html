@@ -4,10 +4,36 @@
 {% endblock %}
 {% block body %}
 <h1> Listado de Clientes </h1>
+<p>Se observa la lista de clientes que tiene registrado la app</p>
+<caption> Clientes Registrados</caption>
 {% for instance in object_list %}
-  <p>
-    {{ instance.id }} -
-    <a href='{{ instance.get_absolute_url }}'>{{ instance.user.username }}</a>
-  </p>
+<table> 
+  <style>
+    table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 5px;
+}
+    th{
+      text-align: left;
+    }
+    table{
+      border-spacing: 2px;
+      width: 30%;
+      margin: 0 auto;
+    }
+  </style>
+  <tr>
+    <th>
+      <p> {{ instance.id }} </p>
+
+    </th>
+    <th><p>
+      
+      <a href='{{ instance.get_absolute_url }}'>{{ instance.user.username }}</a>
+    </p></th>
+  </tr>
+
+</table>
 {% endfor %}
 {% endblock %}
