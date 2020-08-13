@@ -10,6 +10,7 @@ from django.views.generic import (
   DeleteView,
   )
 from .models import Producto
+from vendedor.models import Vendedor
 
 class ProductoListView(ListView):
   model = Producto
@@ -26,6 +27,11 @@ class ProductoCreateView(CreateView):
     'vendedor',
   ]
   
+  def get_success_url(self, **kwargs):
+    user = self.request.user.id
+    idvend = Vendedor.objects.get(user__id = user).id
+    return f'/vendedores/{idvend}'
+    
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
@@ -42,9 +48,14 @@ class ProductoUpdateView(UpdateView):
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
+    
 class ProductoDeleteView(DeleteView):
   model = Producto
-  success_url = reverse_lazy('productos:productos-list')
+  success_url = '/vendedores'
+  def get_success_url(self, **kwargs):
+    user = self.request.user.id
+    idvend = Vendedor.objects.get(user__id = user).id
+    return f'/vendedores/{idvend}'
   
   @method_decorator(login_required)
   def dispatch(self, request, *args, **kwargs):

@@ -4,7 +4,9 @@
   Nuevo Vendedor
 {% endblock %}
 {% block body %}
-<h1> Nuevo Vendedor </h1>
+<div class="jumbotron text-center">
+  <h1> Nuevo Vendedor </h1>
+</div>
 <form method="post" enctype="multipart/form-data">>{% csrf_token %}
   {{ form.as_p }}
   <input type="submit" value="Save">
