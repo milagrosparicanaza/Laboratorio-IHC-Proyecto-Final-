@@ -5,32 +5,34 @@
 {% endblock %}
 {% block body %}
 <div class="jumbotron text-center">
-  <h1> Detalle de Vendedores </h1>
+  <h1> Detalle de Vendedor </h1>
   <h2> {{ object.user.username }}</h2>
   <p> Nombres: {{ object.user.first_name }} </p>
   <p> Apellidos: {{ object.user.last_name }} </p>
   <p> Tienda: {{ object.tienda }} </p>
 </div>
-<div class="container">
-  <h3> Productos </h3>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th> </th>
-        <th> </th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for producto in productos %}
-      <tr>
-        <td><a href='{{ producto.get_absolute_url }}'>{{producto.nombre}}</td>
-        <td><a href='{{ producto.get_absolute_url }}update'>editar</td>
-        <td><a href='{{ producto.get_absolute_url }}delete'>eliminar</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <a class="btn btn-primary btn-lg" href="{% url 'productos:productos-create' %}" role="button">Agregar</a>
-</div>
+{% if vend == thisVend %}
+  <div class="container">
+    <h3> Productos </h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th> </th>
+          <th> </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for producto in productos %}
+        <tr>
+          <td><a href='{{ producto.get_absolute_url }}'>{{producto.nombre}}</td>
+          <td><a href='{{ producto.get_absolute_url }}update'>editar</td>
+          <td><a href='{{ producto.get_absolute_url }}delete'>eliminar</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a class="btn btn-primary btn-lg" href="{% url 'productos:productos-create' %}" role="button">Agregar</a>
+  </div>
+{% endif%}
 {% endblock %}
