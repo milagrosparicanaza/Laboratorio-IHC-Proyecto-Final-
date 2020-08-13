@@ -1,3 +1,4 @@
+#from django.conf import settings
 from django.shortcuts import render
 from django.db.models import F
 from django.urls import reverse_lazy
@@ -9,6 +10,8 @@ from django.views.generic import (
   DeleteView,
   )
 from .models import Cliente
+#from django.template.loarder import get_template
+from django.core.mail import EmailMultiAlternatives
 
 class ClienteListView(ListView):
   model = Cliente
@@ -18,6 +21,7 @@ class ClienteDetailView(DetailView):
 
 class ClienteCreateView(CreateView):
   model = Cliente
+  templates_name = 'base.html'
   fields = [
     'user',
     'credit_card',
@@ -31,3 +35,23 @@ class ClienteUpdateView(UpdateView):
 class ClienteDeleteView(DeleteView):
   model = Cliente
   success_url = reverse_lazy('cliente:cliente-list')
+
+def index(request):
+  if request.method == 'POST':
+    mail = request.POST.get('mail')
+
+    send_email(mail)
+  return render(request, 'vista.html',{})
+
+def send_email(mail):
+  context = {'mail' : mail}
+  #template = get_template('correo.html')
+  content = template.render(context)
+
+  email = EmailMultiAlternatives(
+    'UN correo de prueba'
+    'codigoFacilito'
+    #settings.EMAIL_HOST_USER,
+    [mail]
+  )
+  email.attach_alternative(content, 'text/html')
