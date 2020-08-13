@@ -35,3 +35,14 @@ class ProductoUpdateView(UpdateView):
 class ProductoDeleteView(DeleteView):
   model = Producto
   success_url = reverse_lazy('productos:productos-list')
+
+class LisProductos(ListView):
+  template_name = 'baseprod.html'
+  model = Producto
+
+  def get(self, request, *args, **kwargs):
+    name = request.GET['name']
+    precio = Producto.objects.get(nombre = name)
+    subjects = precio.precio.all()
+    data = serializers.serializers('json', subjects, fields=('name','precio','descripcion'))
+    return HttpResponse(data, context_type='aplication/json')
