@@ -8,7 +8,8 @@ from django.views.generic import (
   UpdateView,
   DeleteView,
   )
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from reportlab.pdfgen import canvas
 from django.views import View 
 from .models import Cliente
 
@@ -38,3 +39,13 @@ class ClienteQueryView(View):
     def get(self, request, *args, **kwargs):
       queryset = Cliente.objects.all()
       return JsonResponse(list(queryset.values()), safe = False)
+
+class ReporteClientePDF(View):
+  def get(self, request, *args, **kwargs):
+    response = HttpResponse(content_type='aplication/pdf')
+    response['Content-Disposition'] = 'attachment; filename=ReporteClientes.pdf'
+    pdf = canvas.Canvas(response)
+    pdf.drawString(100,500,"Hello world.")
+    pdf.showPage()
+    pdf.save()
+    return response

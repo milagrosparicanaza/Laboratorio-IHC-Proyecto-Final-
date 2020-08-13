@@ -10,4 +10,5 @@
     <a href='{{ instance.get_absolute_url }}'>{{ instance.user.username }}</a>
   </p>
 {% endfor %}
+<a href='{% url 'cliente:cliente-report' %}' value='reporte'>Descargar Reporte</a>
 {% endblock %}
